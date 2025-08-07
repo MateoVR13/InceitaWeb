@@ -1,0 +1,67 @@
+
+import React from 'react';
+import type { Project, TeamMember, Stat } from './types';
+
+// Icon Components - updated colors
+const EyeIcon = ({ className }: { className?: string }) => (<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>);
+const CpuIcon = ({ className }: { className?: string }) => (<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><rect width="16" height="16" x="4" y="4" rx="2"/><rect width="6" height="6" x="9" y="9" rx="1"/><path d="M15 2v2"/><path d="M15 20v2"/><path d="M2 15h2"/><path d="M2 9h2"/><path d="M20 15h2"/><path d="M20 9h2"/><path d="M9 2v2"/><path d="M9 20v2"/></svg>);
+const LeafIcon = ({ className }: { className?: string }) => (<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><path d="M11 20A7 7 0 0 1 4 13q0-4.5 4-6.5C12 4.5 15 2 20 2c0 4.5-2.5 7.5-4.5 9.5A7 7 0 0 1 11 20z" /><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12" /></svg>);
+const BrainCircuitIcon = ({ className }: { className?: string }) => (<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><path d="M12 5a3 3 0 1 0-5.993.13a3 3 0 0 0-1.87 2.37"/><path d="M12 5a3 3 0 1 1 5.993.13a3 3 0 0 1 1.87 2.37"/><path d="M9 12a3 3 0 1 0-5.87 1.13a3 3 0 0 0-2.03.87"/><path d="M15 12a3 3 0 1 1 5.87 1.13a3 3 0 0 1 2.03.87"/><path d="M6.25 6.25A2.755 2.755 0 0 0 4.5 8.5c0 1.519 1.231 2.75 2.75 2.75"/><path d="M17.75 6.25A2.755 2.755 0 0 1 19.5 8.5c0 1.519-1.231 2.75-2.75 2.75"/><path d="M12 13a3 3 0 1 0-5.993.13a3 3 0 0 0-1.87 2.37"/><path d="M12 13a3 3 0 1 1 5.993.13a3 3 0 0 1 1.87 2.37"/><path d="M5.1 16.87A2.755 2.755 0 0 0 4.5 18.5c0 1.519 1.231 2.75 2.75 2.75"/><path d="M18.9 16.87A2.755 2.755 0 0 1 19.5 18.5c0 1.519-1.231 2.75-2.75 2.75"/><path d="M12 21a3 3 0 1 0-5.993-.13a3 3 0 0 0-1.87-2.37"/><path d="M12 21a3 3 0 1 1 5.993-.13a3 3 0 0 1 1.87-2.37"/></svg>);
+const ThermometerIcon = ({ className }: { className?: string }) => (<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><path d="M14 4v10.54a4 4 0 1 1-4 0V4a2 2 0 0 1 4 0Z"/></svg>);
+const NetworkIcon = ({ className }: { className?: string }) => (<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><rect x="16" y="16" width="6" height="6" rx="1"/><rect x="2" y="16" width="6" height="6" rx="1"/><rect x="9" y="2" width="6" height="6" rx="1"/><path d="M5 16v-3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v3"/><path d="M12 12V8"/></svg>);
+const ChartIcon = ({ className }: { className?: string }) => (<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg>);
+
+const ICON_CLASS = "w-8 h-8 text-light-blue-500";
+
+export const PROJECTS: Project[] = [
+  { id: 1, title: 'Visión por Computador para Aforo Vehicular y Peatonal', summary: 'Sistema inteligente que utiliza cámaras para contar vehículos y peatones en tiempo real, optimizando la gestión del tráfico.', description: 'Mediante algoritmos avanzados de deep learning, nuestro sistema analiza flujos de video para identificar y clasificar objetos. Proporciona datos precisos sobre afluencia, patrones de movimiento y densidad.', technologies: ['Python', 'OpenCV', 'TensorFlow', 'YOLO'], sectors: ['Transporte', 'Gobierno'], imageUrl: 'https://picsum.photos/seed/project1/800/600', icon: <EyeIcon className={ICON_CLASS} /> },
+  { id: 2, title: 'Control de Calidad en Líneas de Producción', summary: 'Solución de visión artificial para detectar defectos en productos durante el proceso de manufactura, asegurando altos estándares.', description: 'Implementamos cámaras de alta velocidad y modelos de IA para inspeccionar productos. El sistema identifica anomalías y alerta a los operadores para evitar la distribución de productos defectuosos.', technologies: ['Visión Artificial', 'Machine Learning', 'C++'], sectors: ['Manufactura', 'Alimentos'], imageUrl: 'https://picsum.photos/seed/project2/800/600', icon: <CpuIcon className={ICON_CLASS} /> },
+  { id: 3, title: 'Monitoreo de Cultivos con Sensores IoT', summary: 'Plataforma de agricultura de precisión que integra sensores en campo para monitorear la salud de los cultivos y optimizar recursos.', description: 'Desplegamos una red de sensores que miden variables clave como la humedad del suelo, la temperatura y la luz. Los datos se transmiten a una plataforma central para que los agricultores visualicen el estado de sus cultivos.', technologies: ['IoT', 'Sensores', 'LoRaWAN', 'React'], sectors: ['Agricultura', 'Agroindustria'], imageUrl: 'https://picsum.photos/seed/project3/800/600', icon: <LeafIcon className={ICON_CLASS} /> },
+  { id: 4, title: 'Detección de Enfermedades en Plantas con IA', summary: 'Herramienta basada en IA que analiza imágenes de plantas para diagnosticar enfermedades de forma temprana.', description: 'Los agricultores pueden subir fotos de sus cultivos y nuestro modelo de IA identifica signos de enfermedades, proporcionando un diagnóstico y sugerencias de tratamiento para reducir la pérdida de cosechas.', technologies: ['IA', 'Computer Vision', 'Flutter', 'PyTorch'], sectors: ['Agricultura', 'Horticultura'], imageUrl: 'https://picsum.photos/seed/project4/800/600', icon: <BrainCircuitIcon className={ICON_CLASS} /> },
+  { id: 5, title: 'Sistema Integrado de Monitoreo Ambiental', summary: 'Solución integral para medir y analizar condiciones ambientales como temperatura, humedad y pH en tiempo real.', description: 'Este sistema utiliza una red de sensores para recopilar datos ambientales críticos. La información se centraliza en un dashboard interactivo, permitiendo el control de invernaderos, bodegas o ecosistemas sensibles.', technologies: ['IoT', 'Sensores', 'Grafana'], sectors: ['Logística', 'Medio Ambiente'], imageUrl: 'https://picsum.photos/seed/project5/800/600', icon: <ThermometerIcon className={ICON_CLASS} /> },
+  { id: 6, title: 'App para Toma de Decisiones Agrícolas', summary: 'Aplicación móvil que provee recomendaciones inteligentes a agricultores para optimizar sus operaciones y maximizar el rendimiento.', description: 'La app combina datos de sensores, pronósticos climáticos y modelos agronómicos para ofrecer consejos personalizados sobre siembra, cosecha, riego y fertilización, mejorando la eficiencia.', technologies: ['IA', 'React Native', 'Firebase'], sectors: ['Agricultura', 'AgroTech'], imageUrl: 'https://picsum.photos/seed/project6/800/600', icon: <BrainCircuitIcon className={ICON_CLASS} /> },
+  { id: 7, title: 'Red de Sensores para Trazabilidad de Productos', summary: 'Sistema basado en IoT para rastrear productos agrícolas desde la granja hasta el consumidor final, garantizando transparencia.', description: 'Utilizamos sensores y etiquetas inteligentes (NFC/RFID) para registrar cada etapa de la cadena de suministro. Los consumidores pueden escanear un código para ver el origen y la calidad del producto.', technologies: ['IoT', 'Blockchain', 'NFC'], sectors: ['Logística', 'Retail'], imageUrl: 'https://picsum.photos/seed/project7/800/600', icon: <NetworkIcon className={ICON_CLASS} /> },
+  { id: 8, title: 'Modelo Predictivo de Rendimiento Agrícola', summary: 'Modelo de machine learning que predice el rendimiento de los cultivos basándose en datos climáticos, de suelo e históricos.', description: 'Analizamos grandes volúmenes de datos para construir modelos que estiman la producción de una cosecha. Esto ayuda a los productores a planificar sus finanzas y gestionar la logística.', technologies: ['Machine Learning', 'Big Data', 'Python'], sectors: ['Finanzas', 'Seguros'], imageUrl: 'https://picsum.photos/seed/project8/800/600', icon: <ChartIcon className={ICON_CLASS} /> },
+];
+
+export const TEAM_MEMBERS: TeamMember[] = [
+    { name: 'Daniel Ricardo Delgado', title: 'Doctor en Ciencias Farmacéuticas', description: 'Investigador y docente, figura entre el 2% de los científicos más influyentes a nivel mundial por sus contribuciones al estudio de la disolución y la termodinámica de fármacos.', imageUrl: 'https://media.licdn.com/dms/image/v2/C4E03AQF3HFgqLytmWw/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1629727817838?e=2147483647&v=beta&t=ZpoLeGsiwL8fronAvF0g48OXtUBO8hPt_x4WWBg13xM' },
+    { name: 'Wilson Alfredo Riveros Lozano', title: 'Magister en Administración de Negocios', description: 'Especialista en Gerencia Logística, Ingeniero Industrial, Investigación basada en ciencia, tecnología e innovación.', imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTzBuLCxD2MSHiEhe2I6_m7raFKEC-M1lOFfA&s' },
+    { name: 'Rossember Eden Cardenas Torres', title: 'Magister en Ciencias Matemáticas', description: 'Experto en inteligencia artificial, automatización y agentes inteligentes, con formación sólida en matemáticas, física y ciencias matemáticas.', imageUrl: 'https://media.licdn.com/dms/image/v2/C5603AQGh6_1qoXLfBQ/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1652795849925?e=2147483647&v=beta&t=gOd-p687YDVnXWP4uWZlCxop7mLjreFQHZp__zXwqjY' },
+    { name: 'Mateo Vergara Roa', title: 'Ingeniero de Sistemas, líder de semilleros de investigación', description: 'Formación técnica en ciencia de datos, con enfoque en herramientas y análisis práctico. Certificaciones profesionales en Data Science (IBM), Python (Microsoft) y Data Analytics (Google).', imageUrl: 'https://media.licdn.com/dms/image/v2/D5603AQFiVJBhoNNBGA/profile-displayphoto-crop_800_800/B56ZhuA_QTH0AQ-/0/1754192413025?e=1756944000&v=beta&t=E7tvA59VIUZbZc_i6TwdhF5uroTpEmL4ON2G3Ozoa8I' },
+    { name: 'Karol Sofia Pulido Talero', title: 'Ingeniera Química e Industrial, líder de semilleros de investigación', description: 'Con pensamiento estructurado y aguda capacidad analítica, aporta una mirada crítica y rigurosa a la resolución de problemas complejos.', imageUrl: 'https://media.licdn.com/dms/image/v2/D4E03AQG8CvNBUev_Hg/profile-displayphoto-shrink_800_800/B4EZVxCD7HGgAg-/0/1741358122050?e=1756944000&v=beta&t=SqfRseuqOT363Vj_n_x3n0H9gUBKsxLh-NCfb1GWSe4' },
+];
+
+export const STATS: Stat[] = [
+    { value: '13.5%', label: 'Uso Agrícola del Suelo', description: 'Del total del suelo en Colombia, mostrando un vasto campo para la tecnificación.' },
+    { value: '90%', label: 'Brecha Tecnológica', description: 'Más del 90% de las unidades productivas carecen de tecnologías avanzadas. Podemos cerrar esa brecha.' },
+    { value: '98%', label: 'Oportunidad de Conexión', description: 'Solo el 1.7% tiene acceso a internet, una barrera que nuestras soluciones IoT y móviles pueden superar.' },
+    { value: '4%', label: 'Estrategia Digital en LATAM', description: 'De empresas agropecuarias en la región tienen una estrategia digital definida. Sea parte de la vanguardia.' }
+];
+
+export const TRAINING_COURSES = [
+  {
+    title: 'Inteligencia Artificial para el Agro',
+    description: 'Aprenda a implementar modelos de IA para la detección de enfermedades, predicción de cosechas y optimización de recursos hídricos y fertilizantes.',
+    icon: <BrainCircuitIcon className="w-10 h-10 mx-auto text-light-blue-500" />,
+    tags: ['IA', 'Agricultura', 'Machine Learning']
+  },
+  {
+    title: 'Despliegue de Redes de Sensores IoT',
+    description: 'Curso práctico sobre la instalación, calibración y mantenimiento de redes de sensores para el monitoreo en tiempo real de variables críticas en campo.',
+    icon: <NetworkIcon className="w-10 h-10 mx-auto text-light-blue-500" />,
+    tags: ['IoT', 'Sensores', 'Hardware']
+  },
+  {
+    title: 'Visión por Computador en la Industria',
+    description: 'Domine las técnicas de visión artificial para el control de calidad automatizado, conteo de inventario y seguridad en plantas de producción.',
+    icon: <EyeIcon className="w-10 h-10 mx-auto text-light-blue-500" />,
+    tags: ['Computer Vision', 'Manufactura', 'Automatización']
+  },
+  {
+    title: 'Análisis de Datos para la Toma de Decisiones',
+    description: 'Transforme los datos de su operación en insights valiosos. Aprenda a usar herramientas de visualización y análisis para tomar decisiones estratégicas.',
+    icon: <ChartIcon className="w-10 h-10 mx-auto text-light-blue-500" />,
+    tags: ['Data Science', 'Big Data', 'Business Intelligence']
+  }
+];
