@@ -1,3 +1,4 @@
+
 /** @type {import('tailwindcss').Config} */
 export default {
   content: [
@@ -12,11 +13,6 @@ export default {
           '100': '#f5f5f7',
           '200': '#e8e8ed',
           '300': '#d2d2d7',
-        },
-        'light-blue': {
-          '300': '#93c5fd',
-          '500': '#3b82f6',
-          '700': '#1d4ed8',
         },
       },
       fontFamily: {
@@ -43,7 +39,7 @@ export default {
         'fade-in-up': 'fade-in-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards',
       },
       boxShadow: {
-        'neon-blue': '0 0 15px rgba(59, 130, 246, 0.4), 0 0 5px rgba(59, 130, 246, 0.6)',
+        'neon-emerald': '0 0 15px rgba(16, 185, 129, 0.4), 0 0 5px rgba(16, 185, 129, 0.6)',
         'card': '0 10px 30px -15px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)',
       }
     },
