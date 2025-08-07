@@ -10,7 +10,6 @@ export interface Project {
   sectors: string[];
   imageUrl: string;
   icon: React.ReactNode;
-  projectUrl?: string;
 }
 
 export interface TeamMember {
