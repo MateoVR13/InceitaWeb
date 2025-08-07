@@ -37,10 +37,19 @@ export default {
             transform: 'translateY(0) scale(1)',
           },
         },
+        'scale-in-up': {
+          '0%': {
+            transform: 'translateY(30px) scale(0.95)',
+          },
+          '100%': {
+            transform: 'translateY(0) scale(1)',
+          },
+        },
       },
       animation: {
         floating: 'floating 5s ease-in-out infinite',
         'fade-in-up': 'fade-in-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+        'scale-in-up': 'scale-in-up 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards',
       },
       boxShadow: {
         'neon-blue': '0 0 15px rgba(59, 130, 246, 0.4), 0 0 5px rgba(59, 130, 246, 0.6)',

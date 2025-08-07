@@ -1,4 +1,6 @@
 
+
+
 import React, { useState, MouseEvent, ReactNode, useEffect } from 'react';
 import type { Project, TeamMember, Stat } from './types';
 import { PROJECTS, TEAM_MEMBERS, STATS, TRAINING_COURSES } from './constants';
@@ -178,8 +180,8 @@ const ProjectModal: React.FC<{ project: Project | null; onClose: () => void }> =
   if (!project) return null;
 
   return (
-    <div className="fixed inset-0 bg-black/40 z-[100] flex items-center justify-center p-4 animate-fade-in-up" onClick={onClose}>
-      <div className="glass-card w-full max-w-4xl max-h-[90vh] overflow-y-auto m-auto" onClick={(e) => e.stopPropagation()}>
+    <div className="fixed inset-0 bg-black/40 z-[100] flex items-center justify-center p-4" onClick={onClose}>
+      <div className="glass-card w-full max-w-4xl max-h-[90vh] overflow-y-auto m-auto animate-scale-in-up" onClick={(e) => e.stopPropagation()}>
         <div className="relative">
             <img src={project.imageUrl} alt={project.title} className="w-full h-64 object-cover rounded-t-lg"/>
             <button onClick={onClose} className="absolute top-4 right-4 bg-black/20 rounded-full p-2 hover:bg-black/40 transition-colors">
@@ -204,6 +206,20 @@ const ProjectModal: React.FC<{ project: Project | null; onClose: () => void }> =
                 </div>
             </div>
           </div>
+
+          {project.demoUrl && (
+            <div className="mt-10 text-center">
+              <a 
+                  href={project.demoUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="glass-button inline-block bg-light-blue-500 hover:bg-light-blue-700 border-transparent text-white font-semibold px-8 py-3 rounded-lg shadow-lg transition-all duration-300"
+              >
+                  Ver Demo
+              </a>
+            </div>
+          )}
+
         </div>
       </div>
     </div>
@@ -229,7 +245,7 @@ const HomePage: React.FC<{setCurrentPage: (page: Page) => void}> = ({setCurrentP
       <section className="container mx-auto px-6 py-24 text-center flex flex-col items-center justify-center animate-fade-in-up">
           <h1 className="text-5xl md:text-7xl font-extrabold text-apple-black leading-tight">
               <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-cyan-400">
-                  Ciencia de Datos
+                  Ciencia y Tecnología
               </span>
               <br/>
               Para un Futuro Sostenible
@@ -282,15 +298,16 @@ const ResearchPage: React.FC = () => (
         <div className="glass-card p-8 md:p-12 grid md:grid-cols-2 gap-12 items-center">
             <div className="relative animate-fade-in-up">
                 <div className="absolute -inset-2 bg-gradient-to-r from-blue-400 to-cyan-400 rounded-2xl transform -rotate-3 opacity-30 blur-lg"></div>
-                <img src="https://picsum.photos/seed/research/800/600" alt="Investigación y Desarrollo" className="relative rounded-2xl shadow-xl w-full"/>
+                <img src="https://d2cbg94ubxgsnp.cloudfront.net/Pictures/web/f/z/j/molecule_gif_579845.gif" alt="Investigación y Desarrollo" className="relative rounded-2xl shadow-xl w-full"/>
             </div>
             <div className="animate-fade-in-up" style={{animationDelay: `150ms`}}>
                 <h3 className="text-3xl font-bold text-apple-black">Nuestras Líneas de Investigación</h3>
                 <ul className="mt-6 space-y-4 text-gray-700">
+                    <li className="flex items-start gap-3"><div className="w-2 h-2 mt-2 rounded-full bg-light-blue-500 shrink-0"></div><span>Análisis termodinámico y de disolución para la industria de alimentos y farmacéutica.</span></li>
                     <li className="flex items-start gap-3"><div className="w-2 h-2 mt-2 rounded-full bg-light-blue-500 shrink-0"></div><span>Ciencia de datos aplicada a la optimización de procesos agrícolas y sostenibles.</span></li>
-                    <li className="flex items-start gap-3"><div className="w-2 h-2 mt-2 rounded-full bg-light-blue-500 shrink-0"></div><span>Desarrollo y calibración de redes de sensores IoT para monitoreo de alta precisión.</span></li>
+                    <li className="flex items-start gap-3"><div className="w-2 h-2 mt-2 rounded-full bg-light-blue-500 shrink-0"></div><span>Desarrollo de sensores IoT para monitoreo de alta precisión.</span></li>
                     <li className="flex items-start gap-3"><div className="w-2 h-2 mt-2 rounded-full bg-light-blue-500 shrink-0"></div><span>Modelado con Inteligencia Artificial para la predicción y prevención en entornos complejos.</span></li>
-                    <li className="flex items-start gap-3"><div className="w-2 h-2 mt-2 rounded-full bg-light-blue-500 shrink-0"></div><span>Análisis termodinámico y de disolución para la industria farmacéutica y de alimentos.</span></li>
+
                 </ul>
             </div>
         </div>
@@ -343,7 +360,7 @@ const ContactPage: React.FC = () => (
                     <p className="flex items-center gap-3"><svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-light-blue-500" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" /></svg><span>Bogotá, Colombia</span></p>
                 </div>
                 <div className="mt-8">
-                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://www.linkedin.com&bgcolor=247-248-250" alt="QR Code" className="rounded-lg shadow-md p-2 bg-white"/>
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://inceita.netlify.app/&bgcolor=247-248-250" alt="QR Code" className="rounded-lg shadow-md p-2 bg-white"/>
                     <p className="text-sm text-gray-500 mt-2">Escanee para agendar una reunión.</p>
                 </div>
             </div>
