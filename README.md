@@ -17,7 +17,7 @@ El código y la aplicación no están diseñados para ser distribuidos como un p
 La aplicación cuenta con varias secciones clave que articulan nuestra propuesta de valor:
 
 - **Inicio:** Una página de bienvenida que resume nuestra misión de aplicar la ciencia y la tecnología para un futuro sostenible.
-- **Proyectos:** Una galería detallada de los proyectos que hemos desarrollado. Cada proyecto incluye una descripción, las tecnologías utilizadas, los sectores de aplicación y el impacto generado.
+- **Proyectos:** Una galería detallada de los proyectos que hemos desarrollado o podemos desarrollar. Cada proyecto incluye una descripción, las tecnologías utilizadas, los sectores de aplicación y el impacto generado.
 - **Investigación:** Una sección que destaca nuestras líneas de investigación y desarrollo, subrayando nuestro compromiso con la innovación desde una base científica rigurosa.
 - **Capacitación:** Información sobre los cursos y programas de formación que ofrecemos para empoderar a otros equipos con habilidades tecnológicas de vanguardia.
 - **Nosotros:** Presentación de nuestro equipo de expertos multidisciplinarios, quienes son el motor detrás de nuestras innovaciones.
